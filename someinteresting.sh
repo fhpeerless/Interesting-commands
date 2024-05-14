@@ -15,8 +15,10 @@ install_package() {
         sudo apt-get install -y $1
     else
         echo "不支持的操作系统"
-        exit 1}
-    fiinstall_bastet() {
+        exit 1
+    fi 
+    }
+    install_bastet() {
     if [ -f /etc/debian_version ]; then
         # Debian/Ubuntu
         sudo apt-get update
@@ -168,7 +170,6 @@ echo "手动执行 cowsay 双引号 要说的话 双引号" ;
         ;;
     6)
         install_bastet
-         fiinstall_bastet
         bastet
         ;;
     *)
