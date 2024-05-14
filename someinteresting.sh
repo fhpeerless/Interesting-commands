@@ -105,6 +105,7 @@ echo "手动执行 cowsay 双引号 要说的话 双引号" ;
     4)
         install_package "sl"
         sl
+        echo "手动执行 sl 展示动力火车";
         ;;
     5)
         if [[ ! -f /etc/redhat-release ]]; then
