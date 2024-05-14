@@ -20,8 +20,6 @@ install_package() {
     fi
 }
 
-case $choice in
-    1)
 # 安装 Term::Animation 模块
 install_term_animation_module() {
     sudo cpanm Term::Animation
@@ -40,6 +38,11 @@ install_asciiquarium() {
     chmod +x asciiquarium
     sudo cp asciiquarium /usr/local/bin
 }
+
+
+
+case $choice in
+    1)
 
 # 主程序
 if [ -f /etc/os-release ]; then
