@@ -91,9 +91,10 @@ echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。
         cmatrix
         ;;
     3)
-    mkk=$(pwd)
+  
        install_cowsay
-        /$mkk/cowsay "Hello, world!"
+        mkk=$(which cowsay)
+        $mkk "Hello, world!"
         ;;
     4)
         install_package "sl"
