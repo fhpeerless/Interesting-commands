@@ -23,6 +23,28 @@ install_package() {
 case $choice in
     1)
 
+# 定义安装 Term::Animation 模块的函数
+install_term_animation_module() {
+    cpanm --sudo Term::Animation
+}
+
+# 判断操作系统并安装依赖
+if [ -f /etc/os-release ]; then
+    # 加载操作系统信息
+    . /etc/os-release
+    
+    if [ "$ID" = "ubuntu" ] || [ "$ID" = "debian" ]; then
+        # Debian 或 Ubuntu
+        sudo apt-get update
+        sudo apt-get install -y cpanminus
+        install_term_animation_module
+
+    elif [ "$ID" = "centos" ]; then
+        # CentOS
+        sudo yum check-update
+        sudo yum install -y perl-App-cpan
+        
+
 # 定义安装 Perl Curses 模块的函数
 install_perl_curses_module() {
     cpan App::cpanminus
@@ -66,6 +88,7 @@ else
 fi
 
 echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。"
+
         asciiquarium
         ;;
         
