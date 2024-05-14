@@ -9,7 +9,7 @@ echo "5) hollywood (电影中动态界面)"
 echo "6) bastet (俄罗斯方块)"
 
 
-  sudo apt-get update
+sudo apt-get update -qq
 export PATH=$PATH:/usr/games
 install_package() {
     if [[ -f /etc/redhat-release ]]; then
