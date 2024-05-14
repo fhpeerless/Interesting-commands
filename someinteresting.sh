@@ -102,7 +102,7 @@ if [ -z "$mkk" ]; then
 else
     echo "找到 cowsay 命令，路径为: $mkk"
 fi
-       "$mkk" "Hello, world!"
+cowsay "Hello, world!"
         ;;
     4)
         install_package "sl"
