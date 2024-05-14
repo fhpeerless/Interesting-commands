@@ -22,9 +22,6 @@ install_package() {
 
 case $choice in
     1)
-
-
-
 # 安装 Term::Animation 模块
 install_term_animation_module() {
     sudo cpanm Term::Animation
@@ -71,10 +68,8 @@ else
 fi
 
 echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。"
-
         asciiquarium
-        ;;
-        
+        ;;        
     2)
         install_package "cmatrix"
         cmatrix
