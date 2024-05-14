@@ -9,7 +9,7 @@ echo "5) hollywood (电影中动态界面)"
 echo "6) bastet (俄罗斯方块)"
 
 
-
+  sudo apt-get update
 export PATH=$PATH:/usr/games
 install_package() {
     if [[ -f /etc/redhat-release ]]; then
@@ -117,7 +117,7 @@ if [ -f /etc/os-release ]; then
     . /etc/os-release
     
     if [ "$ID" = "ubuntu" ] || [ "$ID" = "debian" ]; then
-        sudo apt-get update
+        
         sudo apt-get install -y cpanminus wget libncurses5-dev make gcc
         install_perl_curses_module
         install_term_animation_module
