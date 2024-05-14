@@ -100,8 +100,7 @@ else
     echo "找到 cowsay 命令，路径为: $mkk"
 fi
 /usr/games/cowsay "Hello, world!" ;
-cowsay "Hello, world!" ;
-echo "手动执行 cowsay 要说的话" ;
+echo "手动执行 cowsay 双引号 要说的话 双引号" ;
         ;;
     4)
         install_package "sl"
