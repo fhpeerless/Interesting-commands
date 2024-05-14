@@ -5,7 +5,7 @@ echo "1) asciiquarium (水族馆)"
 echo "2) cmatrix (黑色帝国)"
 echo "3) cowsay (会说话的牛)"
 echo "4) sl (动力火车)"
-echo "5) hollywood (好莱坞黑客动态界面)"
+echo "5) hollywood (电影中动态界面)"
 echo "6) bastet (俄罗斯方块)"
 
 install_package() {
