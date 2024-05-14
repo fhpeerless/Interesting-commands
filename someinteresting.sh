@@ -93,7 +93,14 @@ echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。
     3)
   
        install_cowsay
+      
+
         mkk=$(which cowsay)
+if [ -z "$mkk" ]; then
+    echo "找不到 cowsay 命令。"
+else
+    echo "找到 cowsay 命令，路径为: $mkk"
+fi
        "$mkk" "Hello, world!"
         ;;
     4)
