@@ -37,7 +37,7 @@ install_package() {
         echo "不支持的操作系统。"
     fi
 }
-}
+
 
 install_hollywood() {
     if [ -f /etc/debian_version ]; then
