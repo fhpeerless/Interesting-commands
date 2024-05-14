@@ -23,35 +23,19 @@ install_package() {
 case $choice in
     1)
 
-# 定义安装 Term::Animation 模块的函数
+
+
+# 安装 Term::Animation 模块
 install_term_animation_module() {
-    cpanm --sudo Term::Animation
+    sudo cpanm Term::Animation
 }
 
-# 判断操作系统并安装依赖
-if [ -f /etc/os-release ]; then
-    # 加载操作系统信息
-    . /etc/os-release
-    
-    if [ "$ID" = "ubuntu" ] || [ "$ID" = "debian" ]; then
-        # Debian 或 Ubuntu
-        sudo apt-get update
-        sudo apt-get install -y cpanminus
-        install_term_animation_module
-
-    elif [ "$ID" = "centos" ]; then
-        # CentOS
-        sudo yum check-update
-        sudo yum install -y perl-App-cpan
-        
-
-# 定义安装 Perl Curses 模块的函数
+# 安装 Perl Curses 模块
 install_perl_curses_module() {
-    cpan App::cpanminus
-    cpanm Curses
+    sudo cpanm Curses
 }
 
-# 定义安装 asciiquarium 的函数
+# 下载并安装 asciiquarium
 install_asciiquarium() {
     wget http://www.robobunny.com/projects/asciiquarium/asciiquarium.tar.gz
     tar zxvf asciiquarium.tar.gz
@@ -60,23 +44,22 @@ install_asciiquarium() {
     sudo cp asciiquarium /usr/local/bin
 }
 
-# 判断操作系统并安装依赖
+# 主程序
 if [ -f /etc/os-release ]; then
-    # 加载操作系统信息
     . /etc/os-release
     
     if [ "$ID" = "ubuntu" ] || [ "$ID" = "debian" ]; then
-        # Debian 或 Ubuntu
         sudo apt-get update
         sudo apt-get install -y cpanminus wget libncurses5-dev make gcc
         install_perl_curses_module
+        install_term_animation_module
         install_asciiquarium
 
     elif [ "$ID" = "centos" ]; then
-        # CentOS
         sudo yum check-update
-        sudo yum install -y perl-CPAN wget ncurses-devel gcc make
+        sudo yum install -y perl-App-cpanminus wget ncurses-devel gcc make
         install_perl_curses_module
+        install_term_animation_module
         install_asciiquarium
     else
         echo "此脚本不支持的Linux发行版：$ID"
