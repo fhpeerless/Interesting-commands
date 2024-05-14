@@ -39,7 +39,19 @@ install_asciiquarium() {
     sudo cp asciiquarium /usr/local/bin
 }
 
-
+install_cowsay() {
+    if [ -f /etc/debian_version ]; then
+        # Debian/Ubuntu
+        sudo apt-get update
+        sudo apt-get install -y cowsay
+    elif [ -f /etc/redhat-release ]; then
+        # CentOS
+        sudo yum install -y cowsay
+    else
+        echo "不支持的操作系统"
+        exit 1
+    fi
+}
 
 case $choice in
     1)
@@ -78,7 +90,7 @@ echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。
         cmatrix
         ;;
     3)
-        install_package "cowsay"
+       install_cowsay
         cowsay "Hello, world!"
         ;;
     4)
