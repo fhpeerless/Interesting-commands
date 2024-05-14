@@ -135,7 +135,6 @@ else
     echo "无法确定操作系统。"
     exit 1
 fi
-
 echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。"
         asciiquarium
         ;;        
