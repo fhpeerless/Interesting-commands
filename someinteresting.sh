@@ -18,6 +18,35 @@ install_package() {
         exit 1
     fi
 }
+install_hollywood() {
+    if [ -f /etc/debian_version ]; then
+        # Debian/Ubuntu
+        sudo apt-get update
+        sudo apt-get install -y hollywood
+    elif [ -f /etc/redhat-release ]; then
+        # CentOS/RHEL/Fedora
+        # 检测 CentOS 版本
+        . /etc/os-release
+        if [ "$ID" = "centos" ]; then
+            # 尝试启用 EPEL 仓库并安装 Hollywood
+            sudo yum install -y epel-release
+            sudo yum update
+            # EPEL 仓库可能有 Hollywood，但这不是保证的
+            # 这里使用 sudo yum install -y hollywood
+            # 如果 EPEL 仓库中有 Hollywood，以下命令会尝试安装
+            # 否则，打印手动安装指导
+            if ! sudo yum install -y hollywood; then
+                echo "Hollywood 未在 EPEL 仓库中找到。"
+                echo "你可能需要手动从源代码安装，或查找是否有其他第三方仓库提供支持。"
+            fi
+        else
+            echo "Hollywood 可能不直接支持当前系统。"
+            echo "你可能需要手动从源代码安装，或查找第三方仓库。"
+        fi
+    else
+        echo "不支持的操作系统。"
+    fi
+}
 
 # 安装 Term::Animation 模块
 install_term_animation_module() {
@@ -113,7 +142,7 @@ echo "手动执行 cowsay 双引号 要说的话 双引号" ;
             sudo apt-get install -y hollywood
             hollywood
         else
-            echo "当前系统不支持安装 hollywood。"
+            install_hollywood
         fi
         ;;
     6)
