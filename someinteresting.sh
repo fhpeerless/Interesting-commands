@@ -90,13 +90,9 @@ echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。
         install_package "cmatrix"
         cmatrix
         ;;
-    3)
-  
-       install_cowsay
-      
-
-        mkk=$(which cowsay)
-        source ~/.bashrc
+    3)install_cowsay
+mkk=$(which cowsay)
+source ~/.bashrc
 if [ -z "$mkk" ]; then
     echo "找不到 cowsay 命令。"
 else
