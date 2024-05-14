@@ -5,7 +5,7 @@ echo "1) asciiquarium (水族馆)"
 echo "2) cmatrix (黑色帝国)"
 echo "3) cowsay (会说话的牛)"
 echo "4) sl (动力火车)"
-echo "5) hollywood (假装在忙)"
+echo "5) hollywood (好莱坞黑客动态界面)"
 echo "6) bastet (俄罗斯方块)"
 
 install_package() {
@@ -94,7 +94,7 @@ echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。
   
        install_cowsay
         mkk=$(which cowsay)
-        $mkk "Hello, world!"
+       "$mkk" "Hello, world!"
         ;;
     4)
         install_package "sl"
