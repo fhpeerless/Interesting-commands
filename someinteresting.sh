@@ -96,6 +96,7 @@ echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。
       
 
         mkk=$(which cowsay)
+        source ~/.bashrc
 if [ -z "$mkk" ]; then
     echo "找不到 cowsay 命令。"
 else
