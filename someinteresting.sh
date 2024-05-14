@@ -16,8 +16,29 @@ install_package() {
     else
         echo "不支持的操作系统"
         exit 1
+    fiinstall_bastet() {
+    if [ -f /etc/debian_version ]; then
+        # Debian/Ubuntu
+        sudo apt-get update
+        sudo apt-get install -y bastet
+    elif [ -f /etc/redhat-release ]; then
+        # CentOS/RHEL/Fedora
+        # 检测是 CentOS 还是 Fedora
+        . /etc/os-release
+        if [ "$ID" = "centos" ] || [ "$ID" = "rhel" ]; then
+            # 对于 CentOS/RHEL, 需要 EPEL 仓库
+            sudo yum install -y epel-release
+            sudo yum install -y bastet
+        elif [ "$ID" = "fedora" ]; then
+            # Fedora 应该直接可用
+            sudo dnf install -y bastet
+        fi
+    else
+        echo "不支持的操作系统。"
     fi
 }
+}
+
 install_hollywood() {
     if [ -f /etc/debian_version ]; then
         # Debian/Ubuntu
@@ -146,7 +167,7 @@ echo "手动执行 cowsay 双引号 要说的话 双引号" ;
         fi
         ;;
     6)
-        install_package "bastet"
+        install_bastet
         bastet
         ;;
     *)
