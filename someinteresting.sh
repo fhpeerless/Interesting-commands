@@ -12,6 +12,56 @@ sudo yum install cpanminus
 sudo dnf install cpanminus
 sudo cpanm Term::Animation
 
+# 函数: 安装 cpanminus 和 Term::Animation
+install_term_animation() {
+    # 安装 cpanminus
+    if [ -f /etc/debian_version ]; then
+        # Debian/Ubuntu
+        sudo apt-get update && sudo apt-get install -y cpanminus
+    elif [ -f /etc/redhat-release ]; then
+        # CentOS/RHEL/Fedora
+        if [[ $(grep -Ei 'centos|red hat|redhat' /etc/redhat-release) ]]; then
+            sudo yum install -y cpanminus
+        elif [[ $(grep -Ei 'fedora' /etc/redhat-release) ]]; then
+            sudo dnf install -y cpanminus
+        fi
+    else
+        echo "不支持的操作系统。"
+        exit 1
+    fi
+    
+    # 安装 Term::Animation
+    sudo cpanm Term::Animation
+}
+
+# 函数: 查找并添加 Animation.pm 到 PERL5LIB 环境变量
+update_perl5lib() {
+    # 查找 Animation.pm 的路径
+    animation_path=$(sudo find / -type f -name Animation.pm 2>/dev/null | grep -m1 'Term/Animation.pm')
+
+    if [[ -n "$animation_path" ]]; then
+        # 获取 Animation.pm 所在的目录
+        animation_dir=$(dirname "$animation_path")
+        
+        # 添加到 PERL5LIB 环境变量
+        export PERL5LIB=$PERL5LIB:$animation_dir
+        
+        # 将 PERL5LIB 环境变量添加到 ~/.bashrc 文件中，以便将来使用
+        echo "export PERL5LIB=\$PERL5LIB:$animation_dir" >> ~/.bashrc
+    else
+        echo "未找到 Term::Animation 模块。"
+        exit 1
+    fi
+}
+
+# 主执行函数
+
+    install_term_animation
+    update_perl5lib
+    echo "如果没有错误信息，Term::Animation 应该已经成功安装。"
+
+
+
 export PATH=$PATH:/usr/games
 install_package() {
     if [[ -f /etc/redhat-release ]]; then
