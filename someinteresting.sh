@@ -53,6 +53,8 @@ install_cowsay() {
     fi
 }
 
+read -p "输入你的选择: " choice
+
 case $choice in
     1)
 
