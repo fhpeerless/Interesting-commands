@@ -172,6 +172,7 @@ echo "手动执行 cowsay 双引号 要说的话 双引号" ;
     6)
         install_bastet
         bastet
+        echo "手动执行 bastet 玩俄罗斯方块";
         ;;
     *)
         echo "无效的选择。"
