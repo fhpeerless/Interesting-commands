@@ -22,8 +22,17 @@ install_package() {
 
 case $choice in
     1)
-        install_package "asciiquarium"
         perl -MCPAN -e 'install Term::Animation'
+        sudo apt-get update
+sudo apt-get install build-essential
+sudo apt-get install libncurses5-dev
+cpan Curses
+wget http://www.robobunny.com/projects/asciiquarium/asciiquarium.tar.gz
+tar -zxvf asciiquarium.tar.gz
+cd asciiquarium_*/
+sudo cp asciiquarium /usr/local/bin
+sudo chmod 0755 /usr/local/bin/asciiquarium
+
         asciiquarium
         ;;
     2)
