@@ -92,13 +92,14 @@ echo "asciiquarium 安装完成，可以通过运行 'asciiquarium' 来启动。
         ;;
     3)install_cowsay
 mkk=$(which cowsay)
-source ~/.bashrc
+# 加载变量
+source ~/.bashrc 
 if [ -z "$mkk" ]; then
     echo "找不到 cowsay 命令。"
 else
     echo "找到 cowsay 命令，路径为: $mkk"
 fi
-cowsay "Hello, world!"
+/usr/games/cowsay "Hello, world!"
         ;;
     4)
         install_package "sl"
