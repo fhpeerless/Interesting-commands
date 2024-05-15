@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "请选择要安装和运行的工具："
+echo "科学刀：因你而精彩，请选择要安装和运行的工具："
 echo "1) asciiquarium (水族馆)"
 echo "2) cmatrix (黑色帝国)"
 echo "3) cowsay (会说话的牛)"
