@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo -i
+
 echo "请选择要安装和运行的工具："
 echo "1) asciiquarium (水族馆)"
 echo "2) cmatrix (黑色帝国)"
