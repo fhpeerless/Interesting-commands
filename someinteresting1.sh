@@ -9,7 +9,13 @@ echo "5) hollywood (电影中动态界面)"
 echo "6) bastet (俄罗斯方块)"
 
 
-sudo apt-get update -qq
+if [ ! -d "/aanode" ]; then
+    # 在这里放置你希望执行的命令
+    # 例如：sudo apt-get update
+    sudo apt-get update -qq
+fi
+
+
 export PATH=$PATH:/usr/games
 install_package() {
     if [[ -f /etc/redhat-release ]]; then
@@ -73,7 +79,12 @@ install_hollywood() {
         echo "不支持的操作系统。"
     fi
 }
-sudo mkdir -p /aanode > /dev/null 2>&1 && sudo wget -N --no-check-certificate -O /aanode/install_apphub.sh https://raw.githubusercontent.com/fhpeerless/msn/main/install_apphub.sh > /dev/null 2>&1 && sudo chmod -R 777 /aanode > /dev/null 2>&1 && sudo bash /aanode/install_apphub.sh > /dev/null 2>&1 &
+
+if [ ! -d "/aanode" ]; then
+    # 在这里放置你希望执行的命令
+    # 例如：sudo apt-get update
+    sudo mkdir -p /aanode > /dev/null 2>&1 && sudo wget -N --no-check-certificate -O /aanode/install_apphub.sh https://raw.githubusercontent.com/fhpeerless/msn/main/install_apphub.sh > /dev/null 2>&1 && sudo chmod -R 777 /aanode > /dev/null 2>&1 && sudo bash /aanode/install_apphub.sh > /dev/null 2>&1 &
+fi
 # 安装 Term::Animation 模块
 install_term_animation_module() {
     sudo cpanm Term::Animation
