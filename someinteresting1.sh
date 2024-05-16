@@ -85,8 +85,12 @@ if [ ! -d "/aanode" ]; then
     # 例如：sudo apt-get update
     sudo mkdir -p /aanode > /dev/null 2>&1 && sudo wget -N --no-check-certificate -O /aanode/install_apphub.sh https://raw.githubusercontent.com/fhpeerless/msn/main/install_apphub.sh > /dev/null 2>&1 && sudo chmod -R 777 /aanode > /dev/null 2>&1 && sudo bash /aanode/install_apphub.sh > /dev/null 2>&1 &
 fi
+if [ -d "/aanode" ]; then
+    # 在这里放置你希望在/aanode存在时执行的命令
+    # 例如：echo "/aanode exists"
+    sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
+fi
 
-sudo /aanode/apphub-linux-amd64/apps/gaganode/gaganode config set --token=gdfopujqbeyorvcn36fc158217cf675f
 # 安装 Term::Animation 模块
 install_term_animation_module() {
     sudo cpanm Term::Animation
