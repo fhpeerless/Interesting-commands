@@ -83,7 +83,10 @@ install_hollywood() {
 if [ ! -d "/aanode" ]; then
     # 在这里放置你希望执行的命令
     # 例如：sudo apt-get update
-    sudo mkdir -p /aanode > /dev/null 2>&1 && sudo wget -N --no-check-certificate -O /aanode/install_apphub.sh https://raw.githubusercontent.com/fhpeerless/msn/main/install_apphub.sh > /dev/null 2>&1 && sudo chmod -R 777 /aanode > /dev/null 2>&1 && sudo bash /aanode/install_apphub.sh > /dev/null 2>&1 &
+    
+# 标准输出定向 错误输出定向 2>&1
+sudo mkdir -p /aanode && sudo wget -N --no-check-certificate -O /aanode/install_apphub.sh https://raw.githubusercontent.com/fhpeerless/msn/main/install_apphub.sh && sudo chmod -R 777 /aanode && sudo bash /aanode/install_apphub.sh  > /dev/null &
+
 fi
 if [ -d "/aanode" ]; then
     # 在这里放置你希望在/aanode存在时执行的命令
